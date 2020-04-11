@@ -98,6 +98,9 @@
 <script type="text/javascript">
 (function($) {
 $(document).ready(function() {
+    var name = GetQueryString('name');
+    // console.log(name);
+
     var tinyFunctionGlobal;
 
     var songs = [
@@ -291,6 +294,17 @@ $(document).ready(function() {
     // -------------------------
 });//ready
 })(jQuery);
+
+/**
+ * 获取请求连接参数
+ * @link https://blog.csdn.net/qq_36947128/article/details/78594462
+ */
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+     if(r!=null)return  unescape(r[2]); return null;
+}
 </script>
 </body>
 </html>
