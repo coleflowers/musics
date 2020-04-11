@@ -117,12 +117,8 @@ function loadContent($, url)
         success : function(res)
         {
             var jsonEnc = res.content;
-            var json = b64_to_utf8(jsonEnc);
-            console.log(json); 
-            var arr = JSON.parse(json);
-           
-            console.log(arr);
-
+            var json = b64_to_utf8(jsonEnc); 
+            var arr = JSON.parse(json); 
             playSons($, arr);
         }
     });
