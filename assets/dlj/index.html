@@ -4,9 +4,11 @@
     <script src='jquery.js'></script>
     <script src='jplayer.playlist.js'></script>
     <script src='jquery.jplayer.v2.7.1.min.js'></script>
+    <!-- <script src='jquery.base64.js'></script> -->
     <link rel="stylesheet" href="css/jplayer.dplayer_grunge.css">
     <link rel="stylesheet" href="css/jplayer.dplayer.css">
     <meta charset='UTF-8'>
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=GB2312"> -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -96,10 +98,145 @@
 
 
 <script type="text/javascript">
+
+var utf8to16 = function(str) {
+                var out, i, len, c;
+                var char2, char3;
+                out = "";
+                len = str.length;
+                i = 0;
+                while(i < len) {
+                    c = str.charCodeAt(i++);
+                    switch(c >> 4)
+                    {
+                        case 0: case 1: case 2: case 3: case 4: case 5: case 6:case7:
+                        // 0xxxxxxx
+                        out += str.charAt(i-1);
+                        break;
+                        case 12: case 13:
+                        // 110x xxxx 10xx xxxx
+                        char2 = str.charCodeAt(i++);
+                        out += String.fromCharCode(((c & 0x1F) << 6) | (char2&0x3F));
+                        break;
+                        case 14:
+                        // 1110 xxxx 10xx xxxx 10xx xxxx
+                            char2 = str.charCodeAt(i++);
+                            char3 = str.charCodeAt(i++);
+                            out += String.fromCharCode(((c & 0x0F) << 12) |
+                                ((char2 & 0x3F) << 6) |
+                                ((char3 & 0x3F) << 0));
+                            break;
+                    }
+                }
+                return out;
+            }
+ 
+ var utf16to8 = function(str) {
+                var out, i, len, c;
+                out = "";
+                len = str.length;
+                for(i = 0; i < len; i++) {
+                    c = str.charCodeAt(i);
+                    if ((c >= 0x0001) && (c <= 0x007F)) {
+                        out += str.charAt(i);
+                    } else if (c > 0x07FF) {
+                        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                        out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                        out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                    } else {
+                        out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+                        out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                    }
+                }
+                return out;
+            }
+
+
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)))
+}
+
+function b64_to_utf8(str) {
+  return decodeURIComponent(escape(window.atob(str)))
+}
+
+function loadContent($, url)
+{
+    $.base64.utf8encode = true;
+    $.ajax({
+        url : url, 
+        type : 'GET',
+        dataType : 'json',
+        success : function(res)
+        {
+            var jsonEnc = res.content;
+            var json = b64_to_utf8(jsonEnc);
+            console.log(json); 
+            var arr = JSON.parse(json);
+           
+            console.log(arr);
+        }
+    });
+}
+
+function loadForName($, url, name)
+{
+    console.log(url);
+    $.ajax({
+        url : url,
+        type : "GET",
+        dataType : "json",
+        success : function(res){
+            var datas = res.tree;
+            var contentUrl = '';
+            for (var i = 0; i < datas.length; i++) {
+                var path = datas[i].path;
+                var tmp = path.split('.');
+
+                if(tmp[0] == name) {
+                    contentUrl = datas[i].url;
+                    break;
+                }
+                //console.log(tmp[0]);
+                //console.log(name);
+                //console.log(datas[i]);
+            }
+            console.log(contentUrl);
+
+            if (contentUrl.length > 0) {
+                loadContent($, contentUrl);
+            } else {
+
+            }
+        },
+        error : function(res)
+        {
+            console.log('出错了'+res);
+        }
+    });
+}
+
 (function($) {
 $(document).ready(function() {
     var name = GetQueryString('name');
+    name = decodeURIComponent(name);
     // console.log(name);
+
+    $.ajax({
+        url : "https://api.github.com/repos/coleflowers/musics/branches/json",
+        type : "GET",
+        dataType : "json",
+        success : function(res)
+        {
+            var url = res.commit.commit.tree.url;
+            loadForName($, url, name);
+            //console.log(url);
+        },
+        error : function(err){
+            console.log(err);
+            console.log('出错了:'+err);
+        }
+    })
 
     var tinyFunctionGlobal;
 
@@ -296,13 +433,28 @@ $(document).ready(function() {
 })(jQuery);
 
 /**
+ * @link https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+ */
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+/**
  * 获取请求连接参数
  * @link https://blog.csdn.net/qq_36947128/article/details/78594462
  */
 function GetQueryString(name)
 {
+    return getParameterByName(name, window.location);
+
      var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+     var r = window.location.search.substr(1).match(reg); 
      if(r!=null)return  unescape(r[2]); return null;
 }
 </script>
