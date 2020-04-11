@@ -114,6 +114,7 @@ function loadContent($, url)
         url : url, 
         type : 'GET',
         dataType : 'json',
+        //crossDomain: true,
         success : function(res)
         {
             var jsonEnc = res.content;
