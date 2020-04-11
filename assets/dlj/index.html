@@ -1,0 +1,296 @@
+<html>
+<head>
+    <title>mp3</title>
+    <script src='jquery.js'></script>
+    <script src='jplayer.playlist.js'></script>
+    <script src='jquery.jplayer.v2.7.1.min.js'></script>
+    <link rel="stylesheet" href="css/jplayer.dplayer_grunge.css">
+    <link rel="stylesheet" href="css/jplayer.dplayer.css">
+    <meta charset='UTF-8'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <style type="text/css">
+        * {
+            margin:0px;
+            padding: 0px;
+        }
+    </style>
+    <style type="text/css">#disk-player-container_1061 div.dap-playlist {display:block !important;}#disk-player-container_1061 {border:1px solid #111111 !important;background-image: url();background-repeat: repeat;}#disk-player-container_1061 div.dap-jplayer {background-color:rgba(24,24,24,1.0) !important;}#disk-player-container_1061 div.dap-interface {background-color:rgba(30,30,30,1.0) !important;border-top-color:#2D2D2D !important;}#disk-player-container_1061 div.dap-playlist li {background-color:rgba(17,17,17,1.0) !important;border-top:1px solid #303030;}#disk-player-container_1061 div.dap-playlist li:hover, #disk-player-container_1061 div.dap-type-playlist div.dap-playlist li.dap-playlist-current:hover {background-color:rgba(34,34,34,1.0) !important;}#disk-player-container_1061 div.dap-type-playlist div.dap-playlist li.dap-playlist-current {background:rgba(42,42,42,1.0) !important;}#disk-player-container_1061 .dplayer-scrollbar .scrollbar {background:rgba(51,51,51,1.0) !important;}#disk-player-container_1061 .dap-play, #disk-player-container_1061 .dap-pause, #disk-player-container_1061 .dap-previous, #disk-player-container_1061 .dap-next, #disk-player-container_1061 .dap-stop {background-color:rgba(0,0,0,1.0) !important;}#disk-player-container_1061 ul.dap-toggles {background:rgba(51,51,51,1.0) !important;}#disk-player-container_1061 div.dap-seek-bar, #disk-player-container_1061 div.dap-volume-bar  {background:#4A4A4A !important;}#disk-player-container_1061 div.dap-interface a, #disk-player-container_1061 div.dap-interface li a, #disk-player-container_1061 div.dap-type-playlist div.dap-playlist a, #disk-player-container_1061 div.dplayer-current-track .dplayer-title {color:#686868 !important;}#disk-player-container_1061 div.dap-interface a:hover, #disk-player-container_1061 div.dap-type-playlist div.dap-playlist a:hover {color:#999999 !important;}#disk-player-container_1061, #disk-player-container_1061 span.dap-artist, #disk-player-container_1061 span.dap-numbers {color:#999999 !important;}#disk-player-container_1061 div.dap-volume-bar-value, #disk-player-container_1061 div.dap-play-bar, #disk-player-container_1061 .dplayer-scrollbar .thumb {background:#3bb6bf !important;}#disk-player-container_1061 div.dap-progress {background:#999999 !important;}</style>
+
+<style>
+    html,body{
+        background: rgb(47,50,53);
+    }
+</style>
+</head>
+<body> 
+
+<div id="disk-player-container_1061" class="disk-player-container dark">
+
+    <div id="jquery_jplayer_1061" class="dap-jplayer" style="width: 80px; height: 110px;">
+        <img id="jp_poster_1" src="" style="width: 80px; height: 110px; display: block;">
+        <audio id="jp_audio_1" preload="none"  ></audio>
+    </div>
+
+    <div id="dplayer-current-track_1061" class="dplayer-current-track">
+        <div class="dplayer-title"><span class="dap-numbers"></span></div>
+        <div class="dplayer-artist"></div>
+    </div>
+
+    <div id="jp_container_1061" class="dap-audio">
+        <div class="dap-type-playlist">
+            <div class="dap-gui dap-interface">
+                <ul class="dap-controls">
+                    <li><a href="javascript:;" class="dap-previous" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="dap-play" tabindex="1" style="display: block;"></a></li>
+                    <li><a href="javascript:;" class="dap-pause" tabindex="1" style="display: none;"></a></li>
+                    <li><a href="javascript:;" class="dap-next" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="dap-stop" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="dap-mute" tabindex="1" title="mute"></a></li>
+                    <li><a href="javascript:;" class="dap-unmute" tabindex="1" title="unmute" style="display: none;"></a></li>
+                    <li><a href="javascript:;" class="dap-volume-max" tabindex="1" title="max volume"></a></li>
+                </ul>
+                <div class="dap-progress">
+                    <div class="dap-seek-bar" style="width: 100%;">
+                        <div class="dap-play-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="dap-volume-bar">
+                    <div class="dap-volume-bar-value" style="width: 80%;"></div>
+                </div>
+                <div class="dap-time-holder">
+                    <div class="dap-current-time">00:00</div>
+                    <div class="dap-duration">00:00</div>
+                </div>
+                <ul class="dap-toggles">
+                    <li><a href="javascript:;" class="dap-shuffle" tabindex="1" title="shuffle" style="display: none;"></a></li>
+                    <li><a href="javascript:;" class="dap-shuffle-off" tabindex="1" title="shuffle off" style="display: block;"></a></li>
+                    <li><a href="javascript:;" class="dap-repeat" tabindex="1" title="repeat"></a></li>
+                    <li><a href="javascript:;" class="dap-repeat-off" tabindex="1" title="repeat off" style="display: none;"></a></li>
+                </ul>
+            </div>
+            <div id="scrollbar1061" class="dap-playlist dplayer-scrollbar dark" style="padding-right:0px !important; ">
+
+                <div class="scrollbar" style=" height: auto;">
+                    <div class="track-dplayer" style="height: auto;">
+                        <div id="thumb_1061" class="thumb" style="  height: 25px; top: 0px;"></div>
+                    </div>
+                </div>
+                <div class="viewport" style="height: auto;">
+                    <div class="overview" style="top: 0px;">
+
+                        <ul class="" style="display: block;">
+                            <!-- <li class="dap-playlist-current"><div><a href="javascript:;" class="dap-playlist-item-remove" style="display: none;">×</a><a href="http://audiojungle.net/item/that-positive-feeling/1990674?ref=srvalle" title="Buy $20" class="dap-icon-cart" tabindex="1" target="_blank"></a><a href="http://audiojungle.net/item/that-positive-feeling/1990674?ref=srvalle" title="Extra Info Text" class="dap-icon-extrainfo" tabindex="1" target="_blank"></a><a href="javascript:;" class="dap-playlist-item dap-playlist-current" tabindex="1"><span class="dap-numbers"></span>That Positive Feeling <span class="dap-artist"> - Alumo Audio</span></a></div></li> -->
+
+                        </ul>
+                    </div><!-- ./overview -->
+                </div><!-- ./viewport -->
+            </div><!-- ./dap-playlist -->
+
+             
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+(function($) {
+$(document).ready(function() {
+    var tinyFunctionGlobal;
+
+    var songs = [
+
+    {title:"<span class=\"dap-numbers\"></span>从白娘子到邓丽君",artist:"邓丽君",
+    mp3:"http://cdn5.lizhi.fm/audio/2016/09/01/2554370766088505862_ud.mp3",
+    oga:"http://cdn5.lizhi.fm/audio/2016/09/01/2554370766088505862_ud.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>【现代传奇女子】邓丽君 - 清印之声",artist:"邓丽君",
+    mp3:"http://cdn5.lizhi.fm/audio/2019/05/19/2738148170715855878_hd.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+ 
+
+    {title:"<span class=\"dap-numbers\"></span>我只在乎你",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=229010.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>漫步人生路",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=229285.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+    {title:"<span class=\"dap-numbers\"></span>甜蜜蜜",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=26608741.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>月亮代表我的心",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=228755.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+    {title:"<span class=\"dap-numbers\"></span>小城故事",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=229779.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>夜来香",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=226176.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+    {title:"<span class=\"dap-numbers\"></span>清平调",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=31917312.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>在水一方",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=229731.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>又见炊烟",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=227957.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+
+
+    {title:"<span class=\"dap-numbers\"></span>美酒加咖啡",artist:"邓丽君",
+    mp3:"http://music.163.com/song/media/outer/url?id=225720.mp3",
+    poster:"http://www.chinadaily.com.cn/hqzx/images/attachement/jpg/site1/20130508/eca86bd9d8db12f456d25a.jpg"},
+    ];
+
+    var myPlaylist = new jPlayerPlaylist({
+        jPlayer: "#jquery_jplayer_1061",
+        cssSelectorAncestor: "#jp_container_1061"
+    }, songs, 
+    {
+        solution: "html, flash",  
+        supplied: "mp3,m4a,oga",
+        wmode: "window",
+        smoothPlayBar: true,
+        keyEnabled: true,
+        preload: "none",
+        size: {
+            width: "80",
+            height: "110", //80 + margin
+            cssClass: ""
+        },
+        audioFullScreen: false //Allows the audio poster to go full screen via keyboard
+    });
+
+ 
+
+    // ----- get current track - //event.play
+    $("#jquery_jplayer_1061").bind($.jPlayer.event.play, function(event) {
+        var current = myPlaylist.current;
+        /////tinyFunctionGlobal(current);
+        if ($.isFunction(tinyFunctionGlobal)) {
+            tinyFunctionGlobal(current);
+        }
+        $("#dplayer-current-track_1061 .dplayer-title, #dplayer-current-track_1061 .dplayer-artist").empty();
+        $("#dplayer-current-track_1061 .dplayer-title").prepend(myPlaylist.playlist[myPlaylist.current].title);
+        $("#dplayer-current-track_1061 .dplayer-artist").prepend(myPlaylist.playlist[myPlaylist.current].artist);
+    });
+    //event.ready
+    $("#jquery_jplayer_1061").bind($.jPlayer.event.ready, function(event) {
+        $("#dplayer-current-track_1061 div").empty();
+        $("#dplayer-current-track_1061 .dplayer-title").append(myPlaylist.playlist[myPlaylist.current].title);
+        $("#dplayer-current-track_1061 .dplayer-artist").append(myPlaylist.playlist[myPlaylist.current].artist);
+    });
+
+
+    $("#scrollbar1061 .viewport").height( 207 );
+    
+    // ----- scrollbar ---------
+    $(window).load({noncache: new Date().getTime()},function() {
+        var tinyScrollbarEvent;
+        var displayHowmanyItems = songs.length+1;// "3";
+        var thumbClick;
+        setTimeout(function(){ 
+            var $tinyScrollbar = $("#scrollbar1061").tinyscrollbar( { thumbSize: 25, axis: "y", wheel:true } );
+            /////////////////////////
+            tinyScrollbarEvent = $tinyScrollbar.data("plugin_tinyscrollbar");
+            tinyFunctionGlobal = function(theIndex) {
+                //alert(theIndex)
+                ////////////////////////////////
+                var trackCurrentHeight = 0;
+                var tracksTotalHeight = 0;
+                var $scrollbar = $("#scrollbar1061");
+                var itemsTracks = $("#scrollbar1061 li"); //.length
+                $(itemsTracks).each(function(i) {
+                    if (i < theIndex) {
+                        trackCurrentHeight += $(this).height() + parseInt($(this).css("paddingTop")) * 2;
+                    }
+                    tracksTotalHeight += $(this).height() + parseInt($(this).css("paddingTop")) * 2;
+                });
+                var viewportHeight = $("#scrollbar1061 .viewport").height();
+                var h = $("#scrollbar1061 li").eq(theIndex).height();
+                var pad = $("#scrollbar1061 li").eq(theIndex).css("paddingTop");
+                pad = parseInt(pad) * 2;
+                //alert(tracksTotalHeight + " | " + trackCurrentHeight + " | " + viewportHeight);
+                if (tracksTotalHeight - trackCurrentHeight + (h + pad) > viewportHeight) {
+                    tinyScrollbarEvent.update(trackCurrentHeight + (theIndex+1) - 1);
+                }
+                var $thumbScrollbar = $scrollbar.find(".track-dplayer .thumb");
+                if ( ($thumbScrollbar.offset().top + $thumbScrollbar.height()) > ($scrollbar.offset().top + $scrollbar.height()) ) {
+                    
+                    // 点击之后往上滚动，如果是固定高度有用。
+                    //$thumbScrollbar.css({ top: $scrollbar.height() - $thumbScrollbar.height() });
+                    //
+                    // $thumbScrollbar.css({ top: 0 });
+                }
+
+                $thumbScrollbar.css({ top: 0 });
+
+
+
+            }
+            //se apenas 1 track
+            var totalTracksTest = parseInt(songs.length) + 1;// "3";
+            if (totalTracksTest == 1) {
+                var liH = $("#scrollbar1061 li").eq(0).height();
+                var liP = $("#scrollbar1061 li").eq(0).css("paddingTop");
+                liP = parseInt(liP) * 2;
+                $("#scrollbar1061 .viewport").height( liH + liP );
+            } else {
+                var liH = $("#scrollbar1061 li").eq(0).height();
+                $("#scrollbar1061 .viewport").height( 207 );
+            }
+
+
+            //$('#scrollbar1061 .scrollbar').css({height:'207px'});
+            //$('#scrollbar1061 .scrollbar .track-dplayer').css({height:'207px'});
+            //$('#scrollbar1061 .scrollbar.thumb').css({height:'207px'});
+
+        }, 2500);
+    });
+    // -------------------------
+    // ----- parent container // hide volume
+    var isTouch = "ontouchstart" in window || "onmsgesturechange" in window ? true : false;
+    ////if (!isTouch) {                        
+    var $container = $( "#disk-player-container_1061" );
+    var $id = "1061";
+    $(window).on("resize", function(e) {
+    //$container.bind("resize", function(e) {
+        var parentWidth = $container.parent().width();
+        //alert(parentWidth + " - " + $container.width());
+        if (parentWidth < 385) {
+            $container.find(".dap-volume-max, .dap-volume-bar, .dap-mute").hide();
+            //$container.find("ul.dap-toggles").hide();
+            //$container.find(".dap-interface ul.dap-controls").css( { marginLeft: "0px !important" } );
+        } else {
+            $container.find(".dap-volume-max, .dap-volume-bar, .dap-mute").show();
+            //$container.find("ul.dap-toggles").show();
+            //$container.find(".dap-interface ul.dap-controls").css( { marginLeft: "80px !important" } );
+        }
+    });//resize
+    setTimeout(function(){ $container.trigger("resize") }, 1000);
+    $container.find("p:empty").remove();
+    ////}
+    // -------------------------
+});//ready
+})(jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,870 @@
+/* ----- no Header ---- */
+/*
+.disk-player-container.dark .dap-jplayer {
+    height: 0 !important;
+    opacity: 0 !important;
+}
+.disk-player-container.dark .dap-jplayer img {
+    display: none !important;
+    height: 0 !important;
+    opacity: 0 !important
+}
+.disk-player-container.dark .dplayer-current-track {
+    display: none !important;
+}
+*/
+/* ----- no Header ---- */
+
+
+/* ----- hide toggles ---- */
+/*
+.disk-player-container div.dap-audio .dap-type-playlist ul.dap-toggles {
+	display: none !important;
+}
+.disk-player-container div.dap-interface ul.dap-controls {
+	margin-left: 5px !important;
+}
+.disk-player-container div.dap-audio div.dap-volume-bar {
+ 	margin-left: 205px !important;
+}
+*/
+/* ----- hide toggles ---- */
+
+
+/* ----- hide previous/next/stop/mute/volume/toggles/progress/time ---- */
+/*
+.disk-player-container div.dap-interface ul.dap-controls a.dap-previous,
+.disk-player-container div.dap-interface ul.dap-controls a.dap-next, 
+.disk-player-container div.dap-interface ul.dap-controls a.dap-stop,
+.disk-player-container div.dap-interface ul.dap-controls a.dap-mute,
+.disk-player-container div.dap-interface ul.dap-controls a.dap-unmute,
+.disk-player-container div.dap-interface ul.dap-controls a.dap-volume-max,
+.disk-player-container div.dap-audio div.dap-volume-bar,
+.disk-player-container div.dap-audio .dap-type-playlist ul.dap-toggles,
+.disk-player-container div.dap-interface .dap-progress,
+.disk-player-container div.dap-audio div.dap-type-playlist div.dap-time-holder {
+	display: none !important;
+}
+
+.disk-player-container div.dap-interface ul.dap-controls {
+	margin-left: 5px !important;
+}
+
+.disk-player-container div.dap-audio div.dap-type-playlist div.dap-interface {
+	height: 60px !important;
+}
+*/
+/* ----- hide previous/next/stop/mute/volume/toggles/progress/time ---- */
+
+
+/* ----- no border ---- */
+/*
+.disk-player-container, .disk-player-container .dap-interface {
+	border: none !important;
+}
+*/
+/* ----- no border ---- */
+
+
+/* main class container */
+.disk-player-container.dark {
+	position:relative;
+	width:100%;
+	color:#999;
+    border: #111 solid 1px;
+    background: none;
+    display: inline-block;
+    /* background-color: #111; */
+}
+
+.disk-player-container.dark *, .disk-player-container.dark *:before, .disk-player-container.dark  *:after {
+	-webkit-box-sizing: content-box !important;
+	-moz-box-sizing: content-box !important;
+	box-sizing:content-box !important;
+}
+
+/* //////////////////////////// */
+.disk-player-container.dark ul, .disk-player-container.dark ol, .disk-player-container.dark li {
+    float: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+	overflow: hidden;
+}
+
+
+.disk-player-container.dark div.dap-audio {
+	font-size:11px;
+	font-family:Helvetica, Arial, sans-serif;
+	line-height:1.6;
+	border:0px solid #000;
+	
+    /* 11.07.2014 */
+    margin-top: 0 !important;
+    width: 100%;
+}
+
+.disk-player-container.dark div.dap-interface {
+	position: relative;
+	width:100%;
+	text-align: center;
+    vertical-align: middle;
+    background: #1e1e1e;
+    border-top: #2d2d2d solid 1px;
+	border-top-color: #2d2d2d;
+	outline:none;
+    z-index: 1;
+    
+    /* 11.07.2014 */
+    padding: 0 !important;
+    border-radius:0;
+}
+
+.disk-player-container.dark div.dap-audio div.dap-type-playlist div.dap-interface {
+	height:100px;
+}
+
+
+/* @group CONTROLS */
+
+.disk-player-container.dark div.dap-controls-holder {
+	clear: both;
+	width:440px;
+	margin:0 auto;
+	position: relative;
+	overflow:hidden;
+	top:-8px; /* This negative value depends on the size of the text in dap-currentTime and dap-duration */
+}
+
+.disk-player-container.dark div.dap-interface ul.dap-controls {
+	list-style-type:none;
+	overflow:hidden;
+    clear: both;
+}
+
+.disk-player-container.dark div.dap-audio ul.dap-controls {
+	padding:10px 10px 0 10px !important;
+	margin:0px !important;
+	margin-left:80px !important;
+}
+
+/* //////////////////////////// */
+.disk-player-container.dark div.dap-interface ul.dap-controls li {
+	display:inline;
+	float: left;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border: 0;
+    background: none;
+	width: auto;
+	position: static;
+}
+.disk-player-container.dark div.dap-interface ul.dap-controls li:before, .disk-player-container.dark div.dap-interface ul.dap-controls li:after, .disk-player-container.dark div.dap-interface ul.dap-toggles li:before, .disk-player-container.dark div.dap-interface ul.dap-toggles li:after {
+    content: none;
+}
+
+
+/* //// 08.jun.2014 //// */
+.disk-player-container.dark div.dap-interface ul.dap-controls a {
+    position: relative;
+    top: auto !important;
+    text-indent: 0;
+	
+	font-family: DiskPlayer !important;
+}
+/* //// 08.jun.2014 //// */
+.disk-player-container.dark div.dap-interface ul.dap-controls a:before {
+    font-family: inherit !important;
+}
+
+
+.disk-player-container.dark div.dap-interface a, .disk-player-container.dark div.dap-interface li a, .disk-player-container.dark div.dap-type-playlist div.dap-playlist a, div.dplayer-current-track .dplayer-title {
+	display:block;
+	overflow:hidden;
+	outline:none;
+	
+	/* Transition */
+	-o-transition:color 0.5s ease 0.0s;
+	-ms-transition:color 0.5s ease 0.0s;
+	-moz-transition:color 0.5s ease 0.0s;
+	-webkit-transition:color 0.5s ease 0.0s;
+	transition:color 0.5s ease 0.0s;
+}
+.disk-player-container.dark div.dap-interface a:hover, .disk-player-container.dark div.dap-type-playlist div.dap-playlist a:hover {
+	color:#999999 !important;
+}
+
+
+@font-face {
+	font-family: 'DiskPlayer';
+	src:url('../font/fonts2/icomoon.eot?5mlvz4');
+	src:url('../font/fonts2/icomoon.eot?#iefix5mlvz4') format('embedded-opentype'),
+		url('../font/fonts2/icomoon.woff?5mlvz4') format('woff'),
+		url('../font/fonts2/icomoon.ttf?5mlvz4') format('truetype'),
+		url('../font/fonts2/icomoon.svg?5mlvz4#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-play, .disk-player-container.dark div.dap-type-playlist .dap-pause, .disk-player-container.dark div.dap-type-playlist .dap-previous, .disk-player-container.dark div.dap-type-playlist .dap-next, 
+.disk-player-container.dark div.dap-type-playlist .dap-stop, .disk-player-container.dark div.dap-type-playlist .dap-mute, .disk-player-container.dark div.dap-type-playlist .dap-unmute, .disk-player-container.dark div.dap-type-playlist .dap-volume-max, 
+.disk-player-container.dark div.dap-type-playlist .dap-volume-bar, .disk-player-container.dark div.dap-type-playlist .dap-volume-bar-value, .disk-player-container.dark div.dap-type-playlist .dap-full-screen, .disk-player-container.dark div.dap-type-playlist .dap-restore-screen, 
+.disk-player-container.dark div.dap-type-playlist .dap-repeat, .disk-player-container.dark div.dap-type-playlist .dap-repeat-off, .disk-player-container.dark div.dap-type-playlist .dap-shuffle, .disk-player-container.dark div.dap-type-playlist .dap-shuffle-off  {
+	font-family: "DiskPlayer";
+	speak: none;
+	font-style: normal;
+	text-decoration: none !important;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-play, .disk-player-container.dark div.dap-type-playlist .dap-pause, .disk-player-container.dark div.dap-type-playlist .dap-previous, .disk-player-container.dark div.dap-type-playlist .dap-next, 
+.disk-player-container.dark div.dap-type-playlist .dap-stop {
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	
+	font-family: "DiskPlayer";
+	color:#fff !important;
+	font-size: 20px;
+	width: 34px;
+	height: 34px;
+	line-height:34px;
+	padding:0px;
+	text-align:center;
+	text-decoration:none;
+	border-radius:5px;
+    margin:2px;
+    background: none;
+	background-color:#000;
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-repeat, .disk-player-container.dark div.dap-type-playlist .dap-repeat-off, .disk-player-container.dark div.dap-type-playlist .dap-shuffle, .disk-player-container.dark div.dap-type-playlist .dap-shuffle-off, 
+.disk-player-container.dark div.dap-type-playlist .dap-mute, .disk-player-container.dark div.dap-type-playlist .dap-unmute, .disk-player-container.dark div.dap-type-playlist .dap-volume-max, .disk-player-container.dark div.dap-type-playlist .dap-full-screen, .disk-player-container.dark div.dap-type-playlist .dap-restore-screen {
+	font-family: "DiskPlayer";
+	color:#fff !important;
+	font-size: 16px;
+	width: 24px;
+	height: 24px;
+	line-height:24px;
+	padding:0px;
+	text-align:center;
+	text-decoration:none;
+	margin:2px;
+    background: none;
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-play:hover, .disk-player-container.dark div.dap-type-playlist .dap-pause:hover, .disk-player-container.dark div.dap-type-playlist .dap-previous:hover, .disk-player-container.dark div.dap-type-playlist .dap-next:hover, 
+.disk-player-container.dark div.dap-type-playlist .dap-stop:hover, .disk-player-container.dark div.dap-type-playlist .dap-repeat:hover, .disk-player-container.dark div.dap-type-playlist .dap-repeat-off:hover, .disk-player-container.dark div.dap-type-playlist .dap-shuffle:hover, .disk-player-container.dark div.dap-type-playlist .dap-shuffle-off:hover, .disk-player-container.dark div.dap-type-playlist .dap-mute:hover, .disk-player-container.dark div.dap-type-playlist .dap-unmute:hover, .disk-player-container.dark div.dap-type-playlist .dap-volume-max:hover, .disk-player-container.dark div.dap-type-playlist .dap-full-screen:hover, .disk-player-container.dark div.dap-type-playlist .dap-restore-screen:hover {
+	color:#999 !important;
+}
+
+
+.disk-player-container.dark div.dap-type-playlist .dap-play:before {
+    content: '\e626';
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-pause:before {
+  content: "\e627";
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-stop:before {
+  content: "\e628";
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-previous:before {
+  content: "\e629";
+}
+
+.disk-player-container.dark div.dap-type-playlist .dap-next:before {
+  content: "\e62a";
+}
+
+/* @end */
+
+
+
+/* @group ICONS Playlist - Customized */
+
+
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist .dap-icon-cart, .disk-player-container.dark div.dap-type-playlist div.dap-playlist .dap-icon-download, .disk-player-container.dark div.dap-type-playlist div.dap-playlist .dap-icon-extrainfo {
+	font-family: "DiskPlayer";
+	color:#fff !important;
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	line-height:16px;
+	padding:0px;
+	text-align:center;
+	text-decoration:none;
+	margin:2px;
+	margin-right:15px;
+	display:inline !important;
+	float:right;
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-icon-cart:before {
+	content: "\e60f";
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-icon-download:before {
+	content: "\e610";
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-icon-extrainfo:before {
+	content: "\e60d";
+}
+
+/* use image instead font icon */
+/*
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-icon-extrainfo {
+    background-image: url(itunes-icon.png);
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-icon-extrainfo:hover {
+    background-image: url(itunes-icon.png);
+    opacity: 0.7;
+}
+*/
+/* @end */
+
+
+
+/* @group progress bar */
+
+.disk-player-container.dark div.dap-progress {
+	overflow:hidden;
+	background-color: #999;
+    float: none;
+    border-radius: 0;
+}
+.disk-player-container.dark div.dap-audio div.dap-progress {
+	position: relative;
+	top:23px;
+	height:5px;
+}
+
+.disk-player-container.dark div.dap-audio div.dap-type-playlist div.dap-progress {
+	left: 0;
+	margin: 0 50px;
+	position: relative;
+	width: auto;
+    padding: 0;
+    
+    /* 11.07.2014 */
+    border: 0 none;
+    float: none;
+}
+
+.disk-player-container.dark div.dap-seek-bar {
+	background:#4a4a4a;
+	width:0px;
+	height:100%;
+	cursor: pointer;
+    border-radius:0;
+}
+.disk-player-container.dark div.dap-play-bar {
+	background:#1862ae;
+	width:0px;
+	height:100%;
+    border-radius:0;
+}
+
+/* The seeking class is added/removed inside jPlayer */
+.disk-player-container.dark div.dap-seeking-bg {
+	background:#999;
+}
+
+/* @end */
+
+
+/* @group volume controls */
+
+.disk-player-container.dark div.dap-audio div.dap-type-playlist a.dap-mute,
+.disk-player-container.dark div.dap-audio div.dap-type-playlist a.dap-unmute {
+	margin-left: 15px;
+	margin-top:7px;
+	position:absolute;
+    background:none;
+    right:auto;
+}
+
+.disk-player-container.dark div.dap-audio a.dap-volume-max {
+	margin-left: 100px;
+	margin-top:7px;
+	display:inline;
+	position:absolute !important;
+}
+
+
+.disk-player-container.dark a.dap-mute:before {
+	content: "\e632";
+}
+.disk-player-container.dark a.dap-mute:before:hover {
+	content: "\e633";
+}
+.disk-player-container.dark a.dap-unmute:before {
+	content: "\e634";
+	
+}
+.disk-player-container.dark a.dap-unmute:before:hover {
+	content: "\e634";
+}
+.disk-player-container.dark a.dap-volume-max:before {
+	content: "\e630";
+}
+.disk-player-container.dark a.dap-volume-max:before:hover {
+	content: "\e630";
+}
+
+.disk-player-container.dark div.dap-volume-bar {
+	position: absolute;
+	overflow:hidden;
+	background:#4a4a4a;
+	width:55px;
+	height:5px;
+	cursor: pointer;
+    
+    /* 11.07.2014 */
+    border: 0 none;
+    border-radius: 0;
+}
+.disk-player-container.dark div.dap-audio div.dap-volume-bar {
+	/* 11.07.2014 */
+    margin-left: 280px;
+    margin-top: 27px;
+    left: 0 !important;
+    top: 0 !important;
+}
+
+.disk-player-container.dark div.dap-volume-bar-value {
+	background:#1862ae;
+	width:0px;
+	height:5px;
+    border-radius:0;
+    margin:0;
+}
+
+/* @end */
+
+/* @group current time and duration */
+
+.disk-player-container.dark div.dap-audio div.dap-time-holder {
+	position:absolute;
+	top:50px;
+}
+.disk-player-container.dark div.dap-audio div.dap-type-playlist div.dap-time-holder {
+	left: 0;
+    position: relative;
+    top: 12px;
+    width: 100%;
+    
+    /* 11.07.2014 */
+    padding: 0;
+    margin: 0;
+}
+
+.disk-player-container.dark div.dap-current-time,
+.disk-player-container.dark div.dap-duration {
+	font-size: 11px;
+    width: 40px !important;
+}
+
+/* //////////////////////////// */
+.disk-player-container.dark div.dap-current-time {
+	display: inline !important;
+    float: left !important;
+    margin-left: 15px !important;
+	text-align:left !important;
+}
+
+/* //////////////////////////// */
+.disk-player-container.dark div.dap-duration {
+	display: inline;
+    float: right;
+    margin-right: 15px;
+    text-align: right;
+    right: 0 !important;
+}
+
+
+/* @end */
+
+
+
+/* @group playlist */
+
+.disk-player-container.dark div.dap-details {
+	font-weight:bold;
+	text-align:center;
+}
+
+
+/* //////////////////////////// */
+.disk-player-container.dark div.dap-details,
+.disk-player-container.dark div.dap-playlist {
+	width:auto !important;
+	padding-right:18px;
+    float: none;
+    width: none;
+    margin-top: 0;
+    position: relative;
+}
+
+.disk-player-container.dark div.dap-type-playlist div.dap-details {
+	border-top:none;
+}
+.disk-player-container.dark div.dap-details ul,
+.disk-player-container.dark div.dap-playlist ul {
+	list-style-type:none !important;
+	margin:0 !important;
+	padding:0px !important;
+	font-size:12px !important;
+}
+
+.disk-player-container.dark div.dap-details li {
+	padding:5px 0;
+    margin: 0;
+	font-weight:bold;
+}
+
+
+/* /////////////////////////// */
+.disk-player-container.dark div.dap-playlist li {
+	padding:7px 15px 7px 15px;
+	font-size: 12px;
+	line-height:20.5px;
+	height: 20.5px; /* auto */
+
+    margin: 0;
+    background:#111111;
+    border: none;
+	border-top:1px solid #303030;
+	
+	/* width: 100%; */
+}
+.disk-player-container.dark div.dap-playlist li:hover {
+    /* opacity: 0.8; */
+    background:#222222;
+}
+
+.disk-player-container.dark div.dap-playlist li div {
+	display:inline;
+}
+
+/* Note that the first-child (IE6) and last-child (IE6/7/8) selectors do not work on IE */
+
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist li:last-child {
+	padding:7px 15px 7px 15px;
+	border-bottom:none !important;
+	/* border-bottom:#000 solid 1px; */
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist li.dap-playlist-current {
+	list-style-type:none;
+	list-style-position:inside;
+	background:#2a2a2a !important;
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist li.dap-playlist-current:hover {
+	/* background:#f90 !important; */
+}
+
+.disk-player-container.dark div.dap-playlist a.dap-playlist-item {
+	display:block !important;
+    border: 0 none;
+}
+
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a {
+	text-decoration: none;
+	display:inline;
+	color:#fff !important;
+}
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a:hover {
+	/* color:#999999 !important; */
+    background: none;
+}
+
+/* /////////////////////////// */
+.disk-player-container.dark div.dap-type-playlist div.dap-playlist a.dap-playlist-current {
+    /* background:#2a2a2a !important; */
+}
+
+.disk-player-container.dark span.dap-artist {
+	font-size:11px;
+	color:#999;
+}
+.disk-player-container.dark span.dap-numbers {
+	color:#999;
+}
+
+/* @end */
+
+
+/* //// 08.jun.2014 //// */
+.disk-player-container.dark div.dap-jplayer audio,
+.disk-player-container.dark div.dap-jplayer {
+	width: 100% !important;
+	height: auto;
+    position: relative !important;
+	/* max-height:150px; */
+    /* max-width: 422px; */
+}
+
+.disk-player-container.dark div.dap-jplayer {
+	background-color: #181818;	
+}
+
+.disk-player-container.dark div.dap-jplayer img {
+	/* define in php dinamically - size >>> height (150) - 30 (margin) */
+	/* height:220px !important;
+	width:auto;  */
+	
+	width:80px !important;
+	height:80px !important;
+	margin:15px !important;
+	padding: 0 !important;
+	float:left;
+}
+
+.disk-player-container.dark div.dplayer-current-track {
+    left: 110px;
+    position: absolute;
+    top: 15px;
+}
+.disk-player-container.dark div.dplayer-current-track .dplayer-title {
+	font-size: 16px;
+	display:block;
+	color:#fff !important;
+    padding: 5px 0;
+}
+.disk-player-container.dark div.dplayer-current-track .dplayer-artist {
+	font-size: 11px;
+	display:block;
+}
+.disk-player-container.dark div.dplayer-current-track .dplayer-duration {
+	font-size: 11px;
+	display:block;
+}
+
+/* max-width: media querie */
+@media (max-width: 480px) {
+	.disk-player-container.dark div.dap-type-playlist .dap-volume-max, 
+    .disk-player-container.dark div.dap-type-playlist .dap-volume-bar,
+    .disk-player-container.dark div.dap-type-playlist .dap-mute {
+		display:none !important;
+	}
+}
+@media (max-width: 385px) {
+	.disk-player-container.dark ul.dap-toggles {
+        display:none !important;
+    }
+	.disk-player-container.dark div.dap-interface ul.dap-controls {
+		margin-left:0 !important;
+    }
+}
+
+
+
+
+/* @group TOGGLES */
+
+/* The audio toggles are nested inside dap-time-holder */
+
+.disk-player-container.dark ul.dap-toggles {
+	list-style-type:none;
+	overflow:hidden;
+	background:#424242;
+	border-radius:5px;
+	text-align: center;
+    vertical-align: middle;
+}
+
+.disk-player-container.dark div.dap-audio .dap-type-playlist ul.dap-toggles {
+	margin: 0 !important;
+	position: absolute !important;
+	left: 15px !important;
+	top: 15px !important;
+	padding:0px 5px !important;
+}
+
+
+/* /////////////////////////// */
+.disk-player-container.dark ul.dap-toggles li {
+	display:block;
+	float:left;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+	width: auto;
+	position: relative;
+}
+
+.disk-player-container.dark ul.dap-toggles li a {
+	display:block;
+	line-height:100%; /* need this for IE6 */
+    margin: 0;
+	font-family: DiskPlayer !important;
+}
+
+.disk-player-container.dark a.dap-full-screen {
+	content: "\e619";
+	margin-left: 20px;
+}
+
+.disk-player-container.dark a.dap-full-screen:hover {
+	content: "\e619";
+}
+
+.disk-player-container.dark a.dap-restore-screen {
+	content: "\e61a";
+	margin-left: 20px;
+}
+
+.disk-player-container.dark a.dap-restore-screen:hover {
+	content: "\e61a";
+}
+
+.disk-player-container.dark a.dap-repeat:before {
+	content: "\e638";
+}
+
+.disk-player-container.dark a.dap-repeat:before:hover {
+	content: "\e638";
+}
+
+.disk-player-container.dark a.dap-repeat-off:before {
+	content: "\e638";
+	opacity: 0.6;
+}
+
+.disk-player-container.dark a.dap-repeat-off:hover {
+	content: "\e638";
+}
+
+.disk-player-container.dark a.dap-shuffle:before {
+	content: "\e63a";
+}
+
+.disk-player-container.dark a.dap-shuffle:before:hover {
+	content: "\e63a";
+
+}
+
+.disk-player-container.dark a.dap-shuffle-off:before {
+	content: "\e63a";
+	opacity: 0.6;
+}
+
+.disk-player-container.dark a.dap-shuffle-off:hover {
+	content: "\e63a";
+}
+
+/* @end */
+
+
+/* @group NO SOLUTION error feedback */
+
+.disk-player-container.dark .dap-no-solution {
+	padding:5px;
+	font-size:.8em;
+	background-color:#eee;
+	border:2px solid #009be3;
+	color:#000;
+	display:none;
+}
+
+.disk-player-container.dark .dap-no-solution a {
+	color:#000;
+}
+
+.disk-player-container.dark .dap-no-solution span {
+	font-size:1em;
+	display:block;
+	text-align:center;
+	font-weight:bold;
+}
+
+
+/* @group tiny scrollbar */
+
+.disk-player-container.dark .dplayer-scrollbar {
+    margin:0px auto 0px;
+    position: relative;
+	z-index:1;
+	
+	width:100%;
+	top: 0;
+    left: 0;
+}
+
+.disk-player-container.dark .dplayer-scrollbar .viewport {
+	/* define playlist height ////////////////////// */
+	height: 207px;
+	min-height:35px;
+    overflow:hidden;
+    position:relative;
+	
+	width:100%;
+	top: 0;
+    left: 0;
+
+    /* background-color: #111; */
+}
+
+.disk-player-container.dark .dplayer-scrollbar .overview {
+    list-style:none;
+    position:absolute;
+    left:0;
+    top:0;
+    margin:0;
+    padding: 0px 0px;
+	width:100%;
+}
+
+.disk-player-container.dark .dplayer-scrollbar .scrollbar {
+	background:#333;
+    position:absolute;
+    background-position:0 0;
+    right: 0px;
+    top:0;
+    width:18px;
+}
+
+.disk-player-container.dark .dplayer-scrollbar .track-dplayer {
+    height:100%;
+    width:16px;
+    left: 0px;
+    position:relative;
+    padding:0;
+}
+
+.disk-player-container.dark .dplayer-scrollbar .thumb {
+	background:#1862ae;
+    height:20px;
+    width:12px;
+    cursor:pointer;
+    overflow:hidden;
+    position:absolute;
+    top:0;
+    left:3px;
+}
+.disk-player-container.dark .dplayer-scrollbar .thumb:active {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.disk-player-container.dark .dplayer-scrollbar .disable {
+    display:none;
+}
+
+.disk-player-container.dark .noSelect {
+    user-select:none;
+    -o-user-select:none;
+    -moz-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+}
+
+/* @end */
